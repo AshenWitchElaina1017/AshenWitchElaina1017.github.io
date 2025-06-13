@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="Eulus"><meta name="copyright" content="Eulus"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>「新」动计划 · 编程入门 | 魔女の旅々</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/png" href="/favicon.ico"><link rel="mask-icon" href="/favicon.ico" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"miku831.fun","root":"/","title":"魔女之旅","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="当然，我已经为您优化了文档结构。 通过为每个题目设置清晰的二级标题（##），并将其下的“代码及注释”、“知识点讲解”、“代码详解”和“复杂度分析”等部分统一调整为三级标题（###），文档的层级结构现在更加清晰、专业且易于阅读。 「新」动计划 · 编程入门 1. 两整数相加 给你两个整数 num1 和 num2，返回这两个整数的和。  示例 1   输入：num1 &#x3D; 12, num2 &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「新」动计划 · 编程入门">
+<meta property="og:url" content="http://miku831.fun/2025/06/12/coderToLC01/index.html">
+<meta property="og:site_name" content="魔女の旅々">
+<meta property="og:description" content="当然，我已经为您优化了文档结构。 通过为每个题目设置清晰的二级标题（##），并将其下的“代码及注释”、“知识点讲解”、“代码详解”和“复杂度分析”等部分统一调整为三级标题（###），文档的层级结构现在更加清晰、专业且易于阅读。 「新」动计划 · 编程入门 1. 两整数相加 给你两个整数 num1 和 num2，返回这两个整数的和。  示例 1   输入：num1 &#x3D; 12, num2 &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-13T04:52:58.163Z">
+<meta property="article:author" content="Eulus">
+<meta property="article:tag" content="力扣">
+<meta property="article:tag" content="编程入门">
+<meta name="twitter:card" content="summary"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Eulus"><img width="96" loading="lazy" src="/images/miku01.jpg" alt="Eulus"><span class="site-author-status" title="Hello,world!">☺️</span></a><div class="site-author-name"><a href="/about/">Eulus</a></div><span class="site-name">魔女の旅々</span><sub class="site-subtitle"></sub><div class="site-description">Ciallo～(∠・ω< )⌒☆</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">3</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8C%E6%96%B0%E3%80%8D%E5%8A%A8%E8%AE%A1%E5%88%92-%C2%B7-%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">「新」动计划 · 编程入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0"><span class="toc-number">1.1.</span> <span class="toc-text">1. 两整数相加</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A"><span class="toc-number">1.1.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.1.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B8%A9%E5%BA%A6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">2. 温度转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%80%E5%B0%8F%E5%81%B6%E5%80%8D%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">3. 最小偶倍数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">1.3.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%A4%E6%96%AD%E6%A0%B9%E7%BB%93%E7%82%B9%E6%98%AF%E5%90%A6%E7%AD%89%E4%BA%8E%E5%AD%90%E7%BB%93%E7%82%B9%E4%B9%8B%E5%92%8C"><span class="toc-number">1.4.</span> <span class="toc-text">4. 判断根结点是否等于子结点之和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-3"><span class="toc-number">1.4.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-3"><span class="toc-number">1.4.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E7%BB%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.</span> <span class="toc-text">5. 数组异或操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-4"><span class="toc-number">1.5.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-4"><span class="toc-number">1.5.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-4"><span class="toc-number">1.5.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%A5%BD%E6%95%B0%E5%AF%B9%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="toc-number">1.6.</span> <span class="toc-text">6. 好数对的数目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-5"><span class="toc-number">1.6.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-5"><span class="toc-number">1.6.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-5"><span class="toc-number">1.6.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-5"><span class="toc-number">1.6.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%9F%E8%AE%A1%E5%A5%BD%E4%B8%89%E5%85%83%E7%BB%84"><span class="toc-number">1.7.</span> <span class="toc-text">7. 统计好三元组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-6"><span class="toc-number">1.7.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-6"><span class="toc-number">1.7.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-6"><span class="toc-number">1.7.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-6"><span class="toc-number">1.7.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BD%AC%E6%8D%A2%E6%88%90%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D"><span class="toc-number">1.8.</span> <span class="toc-text">8. 转换成小写字母</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-7"><span class="toc-number">1.8.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-7"><span class="toc-number">1.8.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-7"><span class="toc-number">1.8.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-7"><span class="toc-number">1.8.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%90%84%E4%BD%8D%E7%9B%B8%E5%8A%A0"><span class="toc-number">1.9.</span> <span class="toc-text">9. 各位相加</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-8"><span class="toc-number">1.9.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-8"><span class="toc-number">1.9.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-8"><span class="toc-number">1.9.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-8"><span class="toc-number">1.9.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%95%B4%E6%95%B0%E7%9A%84%E5%90%84%E4%BD%8D%E7%A7%AF%E5%92%8C%E4%B9%8B%E5%B7%AE"><span class="toc-number">1.10.</span> <span class="toc-text">10. 整数的各位积和之差</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-9"><span class="toc-number">1.10.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-9"><span class="toc-number">1.10.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-9"><span class="toc-number">1.10.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-9"><span class="toc-number">1.10.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E7%9A%84%E5%B9%82"><span class="toc-number">1.11.</span> <span class="toc-text">11. 2 的幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-10"><span class="toc-number">1.11.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-10"><span class="toc-number">1.11.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-10"><span class="toc-number">1.11.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-10"><span class="toc-number">1.11.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E7%9A%84%E5%B9%82"><span class="toc-number">1.12.</span> <span class="toc-text">12. 3 的幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-11"><span class="toc-number">1.12.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-11"><span class="toc-number">1.12.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-11"><span class="toc-number">1.12.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-11"><span class="toc-number">1.12.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E4%B8%91%E6%95%B0"><span class="toc-number">1.13.</span> <span class="toc-text">13. 丑数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-12"><span class="toc-number">1.13.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-12"><span class="toc-number">1.13.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-12"><span class="toc-number">1.13.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-12"><span class="toc-number">1.13.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E6%95%B0%E7%BB%84"><span class="toc-number">1.14.</span> <span class="toc-text">14. 重新排列数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-13"><span class="toc-number">1.14.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-13"><span class="toc-number">1.14.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-13"><span class="toc-number">1.14.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-13"><span class="toc-number">1.14.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5"><span class="toc-number">1.15.</span> <span class="toc-text">15. 转置矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-14"><span class="toc-number">1.15.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-14"><span class="toc-number">1.15.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-14"><span class="toc-number">1.15.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-14"><span class="toc-number">1.15.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%88%86%E5%89%B2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86"><span class="toc-number">1.16.</span> <span class="toc-text">16. 分割字符串的最大得分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-15"><span class="toc-number">1.16.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-15"><span class="toc-number">1.16.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-15"><span class="toc-number">1.16.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-15"><span class="toc-number">1.16.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E7%BB%9F%E8%AE%A1%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0"><span class="toc-number">1.17.</span> <span class="toc-text">17. 统计范围内的元音字符串数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-16"><span class="toc-number">1.17.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-16"><span class="toc-number">1.17.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-16"><span class="toc-number">1.17.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-16"><span class="toc-number">1.17.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E7%9A%84%E5%B3%B0%E9%A1%B6%E7%B4%A2%E5%BC%95"><span class="toc-number">1.18.</span> <span class="toc-text">18. 山脉数组的峰顶索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A-17"><span class="toc-number">1.18.1.</span> <span class="toc-text">代码及注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3-17"><span class="toc-number">1.18.2.</span> <span class="toc-text">知识点讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-17"><span class="toc-number">1.18.3.</span> <span class="toc-text">代码详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-17"><span class="toc-number">1.18.4.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="http://miku831.fun/2025/06/12/coderToLC01/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Eulus"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="魔女の旅々"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">「新」动计划 · 编程入门</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2025-06-12 00:00:00" itemprop="dateCreated datePublished" datetime="2025-06-12T00:00:00+08:00">2025-06-12</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="修改时间：2025-06-13 12:52:58" itemprop="dateModified" datetime="2025-06-13T12:52:58+08:00">2025-06-13</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E7%BC%96%E7%A8%8B/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">编程</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E5%8A%9B%E6%89%A3/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">力扣</span></a><a class="tag-item" href="/tags/%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">编程入门</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><p>当然，我已经为您优化了文档结构。</p>
+<p>通过为每个题目设置清晰的二级标题（##），并将其下的“代码及注释”、“知识点讲解”、“代码详解”和“复杂度分析”等部分统一调整为三级标题（###），文档的层级结构现在更加清晰、专业且易于阅读。</p>
+<h1 id="「新」动计划-·-编程入门"><a href="#「新」动计划-·-编程入门" class="headerlink" title="「新」动计划 · 编程入门"></a>「新」动计划 · 编程入门</h1><hr>
+<h2 id="1-两整数相加"><a href="#1-两整数相加" class="headerlink" title="1. 两整数相加"></a>1. 两整数相加</h2><p> 给你两个整数 num1 和 num2，返回这两个整数的和。</p>
+<ul>
+<li>示例 1</li>
+</ul>
+<p> 输入：num1 &#x3D; 12, num2 &#x3D; 5</p>
+<p> 输出：17</p>
+<ul>
+<li>示例 2</li>
+</ul>
+<p> 输入：num1 &#x3D; -10, num2 &#x3D; 4</p>
+<p> 输出：-6</p>
+<ul>
+<li>提示</li>
+</ul>
+<p>-100 &lt;&#x3D; num1, num2 &lt;&#x3D; 100</p>
+<h3 id="代码及注释"><a href="#代码及注释" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sum</span>(<span class="params">self, num1: <span class="built_in">int</span>, num2: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># num1：第一个整数，范围 [-100, 100]</span></span><br><span class="line">        <span class="comment"># num2：第二个整数，范围 [-100, 100]</span></span><br><span class="line">        <span class="comment"># 直接返回两数相加的结果</span></span><br><span class="line">        <span class="keyword">return</span> num1 + num2</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解"><a href="#知识点讲解" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>LeetCode 类&#x2F;方法格式</strong>：所有解答封装在 <code>class Solution</code> 中，线上由框架调用对应方法。</li>
+<li><strong>Python 类型提示</strong>：<code>num1: int, num2: int</code> 与 <code>-&gt; int</code> 提升可读性，但不影响运行。</li>
+<li><strong>算术运算</strong>：使用 <code>+</code> 运算符对整数执行加法，支持正数和负数。</li>
+<li><strong>输入约束</strong>：<code>[-100, 100]</code> 范围内计算，无需考虑溢出或大数处理。</li>
+</ul>
+<h3 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong>定义类与方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sum</span>(<span class="params">self, num1: <span class="built_in">int</span>, num2: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Solution</strong>：题解类名。</li>
+<li><strong>sum</strong>：方法名，与题目要求一致。</li>
+<li>参数 <code>num1</code>, <code>num2</code> 均为整数，返回值类型为整数。</li>
+</ul>
+<p><strong>核心逻辑</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> num1 + num2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接计算并返回两数之和，没有额外操作。</li>
+</ul>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$</li>
+</ul>
+<hr>
+<h2 id="2-温度转换"><a href="#2-温度转换" class="headerlink" title="2. 温度转换"></a>2. 温度转换</h2><p> 给你一个 四舍五入到小数点后两位 的非负浮点数 <code>celsius</code> 表示温度，以摄氏度（Celsius）为单位。</p>
+<p> 将其分别转换为 开氏度（Kelvin）和 华氏度（Fahrenheit），并以数组 <code>ans = [kelvin, fahrenheit]</code> 的形式返回结果。</p>
+<p> 与实际答案误差不超过 $10⁻⁵$ 的会视为正确答案。</p>
+<ul>
+<li>开氏度 &#x3D; 摄氏度 + 273.15</li>
+<li>华氏度 &#x3D; 摄氏度 * 1.80 + 32.00</li>
+</ul>
+<p><strong>示例 1</strong><br>输入：celsius &#x3D; 36.50<br>输出：[309.65000,97.70000]</p>
+<p><strong>示例 2</strong><br>输入：celsius &#x3D; 122.11<br>输出：[395.26000,251.79800]</p>
+<p><strong>提示</strong><br>0 &lt;&#x3D; celsius &lt;&#x3D; 1000</p>
+<h3 id="代码及注释-1"><a href="#代码及注释-1" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">convertTemperature</span>(<span class="params">self, celsius: <span class="built_in">float</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">float</span>]:</span><br><span class="line">        <span class="comment"># celsius：摄氏度，输入范围 [0,1000]</span></span><br><span class="line">        k: <span class="built_in">float</span> = celsius + <span class="number">273.15</span>    <span class="comment"># 计算开氏度（Kelvin）</span></span><br><span class="line">        h: <span class="built_in">float</span> = celsius * <span class="number">1.80</span> + <span class="number">32.00</span>  <span class="comment"># 计算华氏度（Fahrenheit）</span></span><br><span class="line">        <span class="keyword">return</span> [k, h]  <span class="comment"># 返回 [开氏度, 华氏度]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-1"><a href="#知识点讲解-1" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>浮点数运算</strong>：Python <code>float</code> 支持小数计算，满足题目精度要求。</li>
+<li><strong>类型提示</strong>：<code>celsius: float</code>、<code>-&gt; List[float]</code> 仅作可读性提升，不影响运行。</li>
+<li><strong>列表返回</strong>：直接将两个计算结果组成列表返回，LeetCode 自动比对元素误差。</li>
+<li><strong>常数运算</strong>：加法与乘法均为 $O(1)$ 级别操作。</li>
+</ul>
+<h3 id="代码详解-1"><a href="#代码详解-1" class="headerlink" title="代码详解"></a>代码详解</h3><p><code>class Solution:</code></p>
+<ul>
+<li>定义解题类，LeetCode 后台实例化并调用其方法。</li>
+</ul>
+<p><code>def convertTemperature(self, celsius: float) -&gt; List[float]:</code></p>
+<ul>
+<li>方法名与题目要求一致，接收一个浮点数 <code>celsius</code>。</li>
+</ul>
+<p><code>k: float = celsius + 273.15</code></p>
+<ul>
+<li>根据公式计算开氏度。</li>
+</ul>
+<p><code>h: float = celsius * 1.80 + 32.00</code></p>
+<ul>
+<li>根据公式计算华氏度。</li>
+</ul>
+<p><code>return [k, h]</code></p>
+<ul>
+<li>将两种单位的温度值封装到列表中返回。</li>
+</ul>
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$</li>
+</ul>
+<hr>
+<h2 id="3-最小偶倍数"><a href="#3-最小偶倍数" class="headerlink" title="3. 最小偶倍数"></a>3. 最小偶倍数</h2><p> 给你一个正整数 <code>n</code>，返回 2 和 <code>n</code> 的最小公倍数（正整数）。</p>
+<ul>
+<li><p><strong>示例 1</strong>：<br> 输入：n &#x3D; 5<br> 输出：10<br> 解释：5 和 2 的最小公倍数是 10。</p>
+</li>
+<li><p><strong>示例 2</strong>：<br> 输入：n &#x3D; 6<br> 输出：6<br> 解释：6 和 2 的最小公倍数是 6。注意数字会是它自身的倍数。</p>
+</li>
+<li><p><strong>提示</strong>：<br>1 &lt;&#x3D; n &lt;&#x3D; 150</p>
+</li>
+</ul>
+<h3 id="代码及注释-2"><a href="#代码及注释-2" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">smallestEvenMultiple</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># n: 正整数，范围 [1, 150]</span></span><br><span class="line">        <span class="comment"># 如果 n 为奇数 (n % 2 != 0)，最小偶倍数是 n * 2</span></span><br><span class="line">        <span class="comment"># 如果 n 为偶数，n 本身就是最小偶倍数</span></span><br><span class="line">        <span class="keyword">return</span> n * <span class="number">2</span> <span class="keyword">if</span> n % <span class="number">2</span> != <span class="number">0</span> <span class="keyword">else</span> n</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-2"><a href="#知识点讲解-2" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>最小公倍数（LCM）</strong><br>  - 若 a | b（a 能整除 b），则 LCM(a, b) &#x3D; b；否则 LCM(a, b) &#x3D; a * b &#x2F; GCD(a, b)。<br>  - 本题中特殊化为 a&#x3D;2：<br>    - 当 <code>n</code> 为偶数时，2 | n → LCM(2, n)&#x3D;n；<br>    - 当 <code>n</code> 为奇数时，GCD(2,n)&#x3D;1 → LCM&#x3D;2*n。</li>
+<li><strong>取模运算判断奇偶</strong><br>  - <code>n % 2 != 0</code> 判断奇数。</li>
+<li><strong>条件表达式</strong><br>  - <code>X if 条件 else Y</code>，用于在一行内返回不同结果。</li>
+</ul>
+<h3 id="代码详解-2"><a href="#代码详解-2" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li>执行 <code>n % 2</code>，判断 <code>n</code> 是奇数还是偶数。</li>
+<li><strong>条件表达式</strong>：<br>  - 若 <code>n % 2 != 0</code> 为真，返回 <code>n * 2</code>；<br>  - 否则返回 <code>n</code>。</li>
+</ol>
+<h3 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$ — 仅做一次取模与乘法&#x2F;返回操作。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 只使用常数级额外空间。</li>
+</ul>
+<hr>
+<h2 id="4-判断根结点是否等于子结点之和"><a href="#4-判断根结点是否等于子结点之和" class="headerlink" title="4. 判断根结点是否等于子结点之和"></a>4. 判断根结点是否等于子结点之和</h2><p> 给你一个二叉树的根结点 <code>root</code>，该树恰好包含三个结点：根结点、左子结点和右子结点。如果根结点的值等于两个子结点值之和，返回 <code>true</code>，否则返回 <code>false</code>。</p>
+<ul>
+<li><p><strong>示例 1</strong><br> 输入：root &#x3D; [10,4,6]<br> 输出：true</p>
+</li>
+<li><p><strong>示例 2</strong><br> 输入：root &#x3D; [5,3,1]<br> 输出：false</p>
+</li>
+</ul>
+<h3 id="代码及注释-3"><a href="#代码及注释-3" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.val = val</span><br><span class="line">        <span class="variable language_">self</span>.left = left</span><br><span class="line">        <span class="variable language_">self</span>.right = right</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkTree</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># root.left.val    ← 左子结点的值</span></span><br><span class="line">        <span class="comment"># root.right.val   ← 右子结点的值</span></span><br><span class="line">        <span class="comment"># root.val         ← 根结点的值</span></span><br><span class="line">        <span class="comment"># 判断左右子结点之和是否等于根结点的值</span></span><br><span class="line">        <span class="keyword">return</span> root.left.val + root.right.val == root.val</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-3"><a href="#知识点讲解-3" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>二叉树节点结构</strong>：<code>TreeNode</code> 包含 <code>val</code>、<code>left</code>、<code>right</code> 属性。</li>
+<li><strong>类型提示</strong>：<code>Optional[TreeNode]</code> 表明 <code>root</code> 可能为 <code>None</code>（本题保证存在两个子结点），使用类型提示有助于可读性。</li>
+<li><strong>属性访问</strong>：<code>root.left.val</code> 和 <code>root.right.val</code> 直接获取子结点的值。</li>
+<li><strong>运算顺序</strong>：Python 中先执行加法 <code>root.left.val + root.right.val</code>，再进行等值比较 <code>==</code>，返回 <code>True</code> 或 <code>False</code>。</li>
+</ul>
+<h3 id="代码详解-3"><a href="#代码详解-3" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li>取出左右子结点的值：<code>L = root.left.val</code>，<code>R = root.right.val</code>。</li>
+<li>计算 <code>L + R</code>。</li>
+<li>与根结点 <code>root.val</code> 比较，表达式 <code>L + R == root.val</code> 即为最终布尔结果。</li>
+<li>将该布尔值返回。</li>
+</ol>
+<h3 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$ — 固定次数的属性访问与算术／比较运算。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 使用常量级额外空间。</li>
+</ul>
+<hr>
+<h2 id="5-数组异或操作"><a href="#5-数组异或操作" class="headerlink" title="5. 数组异或操作"></a>5. 数组异或操作</h2><p> 给你两个整数 <code>n</code> 和 <code>start</code>。</p>
+<p> 数组 <code>nums</code> 定义为：<code>nums[i] = start + 2*i</code>（下标从 0 开始），且 <code>n == nums.length</code></p>
+<p>请返回 <code>nums</code> 中所有元素按位异或（XOR）后得到的结果。</p>
+<ul>
+<li><p><strong>示例 1</strong>：<br> 输入：n &#x3D; 5, start &#x3D; 0<br> 输出：8</p>
+</li>
+<li><p><strong>示例 2</strong>：<br> 输入：n &#x3D; 4, start &#x3D; 3<br> 输出：8</p>
+</li>
+<li><p><strong>示例 3</strong>：<br> 输入：n &#x3D; 1, start &#x3D; 7<br> 输出：7</p>
+</li>
+<li><p><strong>示例 4</strong>：<br> 输入：n &#x3D; 10, start &#x3D; 5<br> 输出：2</p>
+</li>
+<li><p><strong>提示</strong>：<br>1 &lt;&#x3D; n &lt;&#x3D; 1000<br>0 &lt;&#x3D; start &lt;&#x3D; 1000<br>n &#x3D;&#x3D; nums.length</p>
+</li>
+</ul>
+<h3 id="代码及注释-4"><a href="#代码及注释-4" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">xorOperation</span>(<span class="params">self, n: <span class="built_in">int</span>, start: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># nums[0] = start，将其作为初始异或结果</span></span><br><span class="line">        res = start</span><br><span class="line">        <span class="comment"># 从 i = 1 到 n-1，生成 nums[i] 并与 res 进行异或</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            <span class="comment"># nums[i] = start + 2*i</span></span><br><span class="line">            res = res ^ (start + <span class="number">2</span> * i)</span><br><span class="line">        <span class="comment"># 返回所有元素异或后的结果</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-4"><a href="#知识点讲解-4" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>数组生成</strong>：无需显式存储整个数组，通过公式 <code>start + 2*i</code> 动态计算每个元素。</li>
+<li><strong>异或运算性质</strong>：<br>  - a ^ a &#x3D; 0，a ^ 0 &#x3D; a<br>  - 异或具备交换律和结合律，可任意顺序累积。</li>
+<li><strong>位运算效率</strong>：异或操作在硬件层面高效，单次为 $O(1)$。</li>
+</ul>
+<h3 id="代码详解-4"><a href="#代码详解-4" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>res = start</code>：将 <code>nums[0]</code> 设为初始值。</li>
+<li><code>for i in range(1, n):</code> 遍历剩余下标。</li>
+<li><code>start + 2 * i</code>：按题意计算当前元素值。</li>
+<li><code>res = res ^ (...)</code>：将当前元素与已有结果异或，更新 <code>res</code>。</li>
+<li>循环结束后，<code>res</code> 即为所有 <code>nums</code> 元素的异或结果，直接返回。</li>
+</ol>
+<h3 id="复杂度分析-4"><a href="#复杂度分析-4" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n)$ — 需遍历 n 次。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 仅使用常数级额外变量。</li>
+</ul>
+<hr>
+<h2 id="6-好数对的数目"><a href="#6-好数对的数目" class="headerlink" title="6. 好数对的数目"></a>6. 好数对的数目</h2><p> 给你一个整数数组 <code>nums</code>。如果一组数字 (i, j) 满足 <code>nums[i] == nums[j]</code> 且 <code>i &lt; j</code>，就可以认为是一组 <strong>好数对</strong>。</p>
+<p> 返回好数对的数目。</p>
+<ul>
+<li><strong>示例 1</strong><br>输入：nums &#x3D; [1,2,3,1,1,3]<br>输出：4<br>解释：共有 4 组好数对，分别是 (0,3)、(0,4)、(3,4)、(2,5)。</li>
+<li><strong>示例 2</strong><br>输入：nums &#x3D; [1,1,1,1]<br>输出：6<br>解释：数组中的每组数字都是好数对，总共 C(4,2)&#x3D;6 组。</li>
+<li><strong>示例 3</strong><br>输入：nums &#x3D; [1,2,3]<br>输出：0</li>
+</ul>
+<h3 id="代码及注释-5"><a href="#代码及注释-5" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numIdenticalPairs</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 结果计数器</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 数组长度</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="comment"># 枚举所有 i&lt;j 的索引对</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, n):</span><br><span class="line">                <span class="comment"># 若值相等，则构成好数对</span></span><br><span class="line">                <span class="keyword">if</span> nums[i] == nums[j]:</span><br><span class="line">                    res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-5"><a href="#知识点讲解-5" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>双重循环枚举</strong>：通过两层 for 循环穷举所有 (i,j) 且 i&lt;j 的组合。</li>
+<li><strong>相等判断</strong>：用 <code>nums[i] == nums[j]</code> 识别好数对。</li>
+<li><strong>数学组合</strong>：当所有元素相同时，总对数等于组合数 $C(n,2)&#x3D;n*(n-1)&#x2F;2$。</li>
+<li><strong>优化思路</strong>：可用哈希表记录每个数出现次数，遍历一次时动态累加已有次数，实现 $O(n)$ 时间。</li>
+</ul>
+<h3 id="代码详解-5"><a href="#代码详解-5" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>res = 0</code>：初始化好数对计数。</li>
+<li><code>n = len(nums)</code>：获得数组长度。</li>
+<li>外层 <code>for i in range(n)</code>：枚举左侧下标。</li>
+<li>内层 <code>for j in range(i+1, n)</code>：枚举右侧下标，保证 i&lt;j。</li>
+<li><code>if nums[i] == nums[j]</code>：判断当前一对值是否相等。</li>
+<li><code>res += 1</code>：若相等则累计计数。</li>
+<li>循环结束后返回 <code>res</code>。</li>
+</ol>
+<h3 id="复杂度分析-5"><a href="#复杂度分析-5" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n²)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$<br><strong>可选优化</strong>：<br> 使用哈希表，在一次遍历中对每个 <code>x = nums[i]</code>，令 <code>res += count[x]</code>，再执行 <code>count[x] += 1</code>，将时间降为 $O(n)$，空间 $O(n)$。</li>
+</ul>
+<hr>
+<h2 id="7-统计好三元组"><a href="#7-统计好三元组" class="headerlink" title="7. 统计好三元组"></a>7. 统计好三元组</h2><p> 给你一个整数数组 <code>arr</code> 以及三个整数 <code>a</code>, <code>b</code>, <code>c</code>，请统计其中的好三元组数目。</p>
+<p> 如果三元组 <code>(arr[i], arr[j], arr[k])</code> 满足以下全部条件，则认为它是一个<strong>好三元组</strong>：</p>
+<ul>
+<li>0 ≤ i &lt; j &lt; k &lt; arr.length</li>
+<li>|arr[i] - arr[j]| ≤ a</li>
+<li>|arr[j] - arr[k]| ≤ b</li>
+<li>|arr[i] - arr[k]| ≤ c</li>
+</ul>
+<p>返回好三元组的数量。</p>
+<h3 id="代码及注释-6"><a href="#代码及注释-6" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countGoodTriplets</span>(<span class="params">self, arr: <span class="type">List</span>[<span class="built_in">int</span>], a: <span class="built_in">int</span>, b: <span class="built_in">int</span>, c: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># arr：整数数组，长度范围 [3, 100]</span></span><br><span class="line">        <span class="comment"># a, b, c：阈值，范围 [0, 1000]</span></span><br><span class="line">        n = <span class="built_in">len</span>(arr)                   <span class="comment"># 数组长度</span></span><br><span class="line">        count = <span class="number">0</span>                      <span class="comment"># 好三元组计数器</span></span><br><span class="line">        <span class="comment"># 枚举所有三元组下标 (i, j, k)，满足 0 ≤ i &lt; j &lt; k &lt; n</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, n):</span><br><span class="line">                    <span class="comment"># 同时检查三对元素差值是否均满足条件</span></span><br><span class="line">                    <span class="keyword">if</span> <span class="built_in">abs</span>(arr[i] - arr[j]) &lt;= a \</span><br><span class="line">                       <span class="keyword">and</span> <span class="built_in">abs</span>(arr[j] - arr[k]) &lt;= b \</span><br><span class="line">                       <span class="keyword">and</span> <span class="built_in">abs</span>(arr[i] - arr[k]) &lt;= c:</span><br><span class="line">                        count += <span class="number">1</span>       <span class="comment"># 满足条件则累加</span></span><br><span class="line">        <span class="keyword">return</span> count                   <span class="comment"># 返回结果</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-6"><a href="#知识点讲解-6" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>三重循环枚举</strong><br> 通过三层嵌套 <code>for</code> 循环，生成所有满足 <code>i &lt; j &lt; k</code> 的下标组合。</li>
+<li><strong>绝对值运算</strong><br> 使用 <code>abs(x - y)</code> 计算两个元素值之差的绝对值，分别与 <code>a</code>, <code>b</code>, <code>c</code> 进行比较。</li>
+<li><strong>条件累加</strong><br> 在判断语句中同时检查三组差值，当且仅当三者都不超过对应阈值时，才将 <code>count</code> 加一。</li>
+</ul>
+<h3 id="代码详解-6"><a href="#代码详解-6" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong>初始化</strong><br>  - <code>n = len(arr)</code>：获取数组长度。<br>  - <code>count = 0</code>：初始化好三元组计数器。</p>
+<p><strong>枚举下标</strong><br>  - 第一层 <code>for i in range(n)</code>：取第一个元素下标。<br>  - 第二层 <code>for j in range(i+1, n)</code>：取第二个元素下标，保证 <code>j &gt; i</code>。<br>  - 第三层 <code>for k in range(j+1, n)</code>：取第三个元素下标，保证 <code>k &gt; j</code>。</p>
+<p><strong>条件判断</strong><br>  - <code>abs(arr[i] - arr[j]) ≤ a</code><br>  - <code>abs(arr[j] - arr[k]) ≤ b</code><br>  - <code>abs(arr[i] - arr[k]) ≤ c</code><br> 三个条件均满足时，<code>count += 1</code>。</p>
+<p><strong>返回结果</strong><br>  - 循环结束后，<code>count</code> 即为符合要求的好三元组总数。</p>
+<h3 id="复杂度分析-6"><a href="#复杂度分析-6" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n³)$，三重循环遍历所有下标组合，n 最多 100，符合题目限制。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，仅使用常数级辅助变量。</li>
+</ul>
+<hr>
+<h2 id="8-转换成小写字母"><a href="#8-转换成小写字母" class="headerlink" title="8. 转换成小写字母"></a>8. 转换成小写字母</h2><p> 给你一个字符串 <code>s</code>，将其中的所有大写字母转换成对应的小写字母，返回新的字符串。</p>
+<h3 id="代码及注释-7"><a href="#代码及注释-7" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">toLowerCase</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="comment"># 调用 Python 内置方法，将所有字符按 Unicode 小写映射返回新字符串</span></span><br><span class="line">        <span class="keyword">return</span> s.lower()</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-7"><a href="#知识点讲解-7" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>字符串方法</strong>：<code>str.lower()</code> 会遍历字符串，对每个大写字母做小写转换，不影响非字母字符。</li>
+<li><strong>Unicode&#x2F;ASCII 映射</strong>：在底层，<code>.lower()</code> 根据字符的码点表将大写字母映射到对应的小写字母。</li>
+<li><strong>不可变性</strong>：Python 字符串是不可变对象，<code>lower()</code> 返回一个新字符串，原字符串不变。</li>
+</ul>
+<h3 id="代码详解-7"><a href="#代码详解-7" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>s.lower()</code>：对字符串 <code>s</code> 中的每个字符调用小写映射，生成一个全新的字符串。</li>
+<li>直接 <code>return</code> 该结果，无需额外操作。</li>
+</ol>
+<h3 id="复杂度分析-7"><a href="#复杂度分析-7" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n)$，需扫描并转换每个字符。</li>
+<li><strong>空间复杂度</strong>：$O(n)$，返回的新字符串长度与输入相同。</li>
+</ul>
+<hr>
+<h2 id="9-各位相加"><a href="#9-各位相加" class="headerlink" title="9. 各位相加"></a>9. 各位相加</h2><p> 给定一个非负整数 <code>num</code>，重复将各个位上的数字相加，直到结果为一位数，返回这个结果。</p>
+<ul>
+<li><p><strong>示例 1</strong><br> 输入：num &#x3D; 38<br> 输出：2<br> 解释：38 → 3 + 8 &#x3D; 11 → 1 + 1 &#x3D; 2</p>
+</li>
+<li><p><strong>示例 2</strong><br> 输入：num &#x3D; 0<br> 输出：0</p>
+</li>
+<li><p><strong>提示</strong><br>0 &lt;&#x3D; num &lt;&#x3D; 2^31 - 1</p>
+</li>
+</ul>
+<h3 id="代码及注释-8"><a href="#代码及注释-8" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">addDigits</span>(<span class="params">self, num: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 当 num 至少两位时，继续循环</span></span><br><span class="line">        <span class="keyword">while</span> num &gt;= <span class="number">10</span>:</span><br><span class="line">            tmp: <span class="built_in">int</span> = <span class="number">0</span>    <span class="comment"># 累加当前 num 每一位的和</span></span><br><span class="line">            <span class="comment"># 将 num 各位数字累加至 tmp</span></span><br><span class="line">            <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">                tmp += num % <span class="number">10</span>  <span class="comment"># 取最低位并累加</span></span><br><span class="line">                num //= <span class="number">10</span>       <span class="comment"># 去掉最低位</span></span><br><span class="line">            num = tmp  <span class="comment"># 更新 num 为各位之和</span></span><br><span class="line">        <span class="keyword">return</span> num     <span class="comment"># 返回最后一位数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-8"><a href="#知识点讲解-8" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>取余与整除</strong>：<code>num % 10</code> 得到最低位，<code>num // 10</code> 去掉最低位。</li>
+<li><strong>循环嵌套</strong>：外层循环判断结果是否为多位数，内层循环求当前各位之和。</li>
+<li><strong>数字根概念</strong>：该过程即数字根迭代求和，虽可用 $O(1)$ 公式优化，此处为直观实现。</li>
+<li><strong>常量空间</strong>：仅用若干整型变量，无需额外数组或递归栈。</li>
+</ul>
+<h3 id="代码详解-8"><a href="#代码详解-8" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong>外层判断</strong></p>
+<ul>
+<li><code>while num &gt;= 10</code>：只要 <code>num</code> 不止一位，就继续拆分求和。</li>
+</ul>
+<p><strong>内层拆分累加</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">    tmp += num % <span class="number">10</span></span><br><span class="line">    num //= <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>每次取 <code>num % 10</code> 累加到 <code>tmp</code>，再 <code>num //= 10</code> 逐位剥离。</li>
+</ul>
+<p><strong>更新与重复</strong></p>
+<ul>
+<li><code>num = tmp</code>：将累加结果赋回 <code>num</code>，可能仍为多位，回到外层继续。</li>
+</ul>
+<p><strong>返回结果</strong></p>
+<ul>
+<li>当 <code>num &lt; 10</code> 时跳出，<code>return num</code>。</li>
+</ul>
+<h3 id="复杂度分析-8"><a href="#复杂度分析-8" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(\log n)$ — d 位数每次 $O(d)$，迭代次数亦为 $O(d)$。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 仅使用常数个整型变量。</li>
+</ul>
+<hr>
+<h2 id="10-整数的各位积和之差"><a href="#10-整数的各位积和之差" class="headerlink" title="10. 整数的各位积和之差"></a>10. 整数的各位积和之差</h2><p> 给你一个整数 <code>n</code>，请计算并返回该整数 <strong>各位数字之积</strong> 与 <strong>各位数字之和</strong> 的差。</p>
+<h3 id="代码及注释-9"><a href="#代码及注释-9" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">subtractProductAndSum</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 计算各位数字的乘积</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">pro</span>(<span class="params">x: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">            tmp = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> x &gt; <span class="number">0</span>:</span><br><span class="line">                tmp *= x % <span class="number">10</span>    <span class="comment"># 取最低位并累乘</span></span><br><span class="line">                x //= <span class="number">10</span>         <span class="comment"># 去掉最低位</span></span><br><span class="line">            <span class="keyword">return</span> tmp</span><br><span class="line">        <span class="comment"># 计算各位数字的和</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">summation</span>(<span class="params">x: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">            tmp = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> x &gt; <span class="number">0</span>:</span><br><span class="line">                tmp += x % <span class="number">10</span>    <span class="comment"># 取最低位并累加</span></span><br><span class="line">                x //= <span class="number">10</span>         <span class="comment"># 去掉最低位</span></span><br><span class="line">            <span class="keyword">return</span> tmp</span><br><span class="line">        <span class="comment"># 返回乘积与和的差</span></span><br><span class="line">        <span class="keyword">return</span> pro(n) - summation(n)</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-9"><a href="#知识点讲解-9" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>取余与整除</strong>：<code>x % 10</code> 可得到最低位数字，<code>x // 10</code> 可去掉最低位。</li>
+<li><strong>循环累积</strong>：分别使用乘法和加法在循环中累积各位的乘积与和。</li>
+<li><strong>局部函数</strong>：在主方法中定义 <code>pro</code> 和 <code>summation</code> 两个局部函数以提高代码可读性。</li>
+<li><strong>返回差值</strong>：最终用乘积减去和得到结果。</li>
+</ul>
+<h3 id="代码详解-9"><a href="#代码详解-9" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><strong>调用 <code>pro(n)</code></strong>：<br>  - 初始化 <code>tmp = 1</code>，遍历 <code>n</code> 的每一位，累乘到 <code>tmp</code>。<br>  - 循环结束后，<code>tmp</code> 即为所有数字的乘积。</li>
+<li><strong>调用 <code>summation(n)</code></strong>：<br>  - 初始化 <code>tmp = 0</code>，遍历 <code>n</code> 的每一位，累加到 <code>tmp</code>。<br>  - 循环结束后，<code>tmp</code> 即为所有数字的和。</li>
+<li><strong><code>return pro(n) - summation(n)</code></strong>：返回两者之差。</li>
+</ol>
+<h3 id="复杂度分析-9"><a href="#复杂度分析-9" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(d)$，其中 d 是 n 的十进制位数，最多约 $O(\log n)$。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，只使用常数级额外空间。</li>
+</ul>
+<hr>
+<h2 id="11-2-的幂"><a href="#11-2-的幂" class="headerlink" title="11. 2 的幂"></a>11. 2 的幂</h2><p> 给你一个整数 <code>n</code>，请判断该整数是否是 2 的幂次方。如果是，返回 <code>true</code>；否则，返回 <code>false</code>。</p>
+<p> 如果存在一个整数 x 使得 $n &#x3D;&#x3D; 2^x$，则认为 n 是 2 的幂次方。</p>
+<ul>
+<li><strong>示例 1</strong><br> 输入：n &#x3D; 1<br> 输出：true</li>
+<li><strong>示例 2</strong><br> 输入：n &#x3D; 16<br> 输出：true</li>
+<li><strong>示例 3</strong><br> 输入：n &#x3D; 3<br> 输出：false</li>
+<li><strong>提示</strong><br>$-2^{31} \le n \le 2^{31} - 1$</li>
+</ul>
+<h3 id="代码及注释-10"><a href="#代码及注释-10" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isPowerOfTwo</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 排除非正数情况</span></span><br><span class="line">        <span class="comment"># 2 的幂在二进制中只有一个 &#x27;1&#x27;，n &amp; (n-1) 会将最低位的 &#x27;1&#x27; 清零</span></span><br><span class="line">        <span class="comment"># 若结果为 0，则说明原数只有这一位 &#x27;1&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> n &gt; <span class="number">0</span> <span class="keyword">and</span> n &amp; (n - <span class="number">1</span>) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-10"><a href="#知识点讲解-10" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>二进制位与幂次关系</strong>：2 的幂在二进制表示下恰好只有一位是1，其余位全为0。</li>
+<li><strong>位运算清零技巧</strong>：<code>n &amp; (n-1)</code> 会将 <code>n</code> 二进制中最低位的1置为0，其余位保持不变。</li>
+<li><strong>判断唯一性</strong>：如果 <code>n</code> 只有一个1，则 <code>n &amp; (n-1)</code> 结果为0；若有多于一个1，则结果非0。</li>
+<li><strong>非正数排除</strong>：对非正整数（包括0和负数）直接返回 <code>false</code>。</li>
+</ul>
+<h3 id="代码详解-10"><a href="#代码详解-10" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>n &gt; 0</code>：先确保 <code>n</code> 是正数。</li>
+<li><code>n &amp; (n - 1)</code>：对 <code>n</code> 和 <code>n-1</code> 进行按位与运算。</li>
+<li><code>== 0</code>：当且仅当 <code>n</code> 二进制中只有一位1时，上述运算结果才为0。</li>
+<li><strong>整体表达式 <code>n &gt; 0 and n &amp; (n - 1) == 0</code></strong>：先判断正数，再进行位运算判断，返回布尔值。</li>
+</ol>
+<h3 id="复杂度分析-10"><a href="#复杂度分析-10" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$，仅包含常量次位运算和比较。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，只使用固定数量的额外变量。</li>
+</ul>
+<hr>
+<h2 id="12-3-的幂"><a href="#12-3-的幂" class="headerlink" title="12. 3 的幂"></a>12. 3 的幂</h2><p> 给定一个整数 <code>n</code>，判断它是否是 3 的幂次方。如果存在整数 x 使得 $n &#x3D;&#x3D; 3^x$，则认为 n 是 3 的幂次方。返回 <code>true</code> 或 <code>false</code>。</p>
+<h3 id="代码及注释-11"><a href="#代码及注释-11" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isPowerOfThree</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 只对正数有效</span></span><br><span class="line">        <span class="comment"># 3^19 = 1162261467，是 32 位有符号整数范围内最大的 3 的幂</span></span><br><span class="line">        <span class="comment"># 如果 n 是 3 的幂，则必能整除 3^19</span></span><br><span class="line">        <span class="keyword">return</span> n &gt; <span class="number">0</span> <span class="keyword">and</span> <span class="built_in">pow</span>(<span class="number">3</span>, <span class="number">19</span>) % n == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-11"><a href="#知识点讲解-11" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>最大幂选择</strong>：32 位有符号整型上限约为 $2^{31}−1$，3 的最大幂是 $3^{19} &#x3D; 1162261467$。</li>
+<li><strong>整除判定</strong>：若 <code>n</code> 是 3 的幂，则 n | $3^{19}$，即 $3^{19} \text{ % } n &#x3D;&#x3D; 0$；反之若能整除，则 <code>n</code> 只能是 3 的幂。</li>
+<li><strong>常数时间</strong>：无需循环或递归，直接常数次运算判断。</li>
+</ul>
+<h3 id="代码详解-11"><a href="#代码详解-11" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>n &gt; 0</code>：剔除非正数（0 或负数）。</li>
+<li><code>pow(3, 19)</code>：计算 3 的 19 次方常量。</li>
+<li><code>pow(3, 19) % n == 0</code>：检查 <code>n</code> 是否为该常量的约数。</li>
+<li>结合逻辑与返回最终布尔值。</li>
+</ol>
+<h3 id="复杂度分析-11"><a href="#复杂度分析-11" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(1)$ — 仅做常数次幂运算和取模。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 只使用固定数量的变量和常量。</li>
+</ul>
+<hr>
+<h2 id="13-丑数"><a href="#13-丑数" class="headerlink" title="13. 丑数"></a>13. 丑数</h2><p> <strong>丑数</strong> 就是只包含质因数 <code>2</code>、<code>3</code> 和 <code>5</code> 的正整数。</p>
+<p> 给你一个整数 <code>n</code>，判断其是否为丑数。如果是，返回 <code>true</code>；否则，返回 <code>false</code>。</p>
+<h3 id="代码及注释-12"><a href="#代码及注释-12" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isUgly</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># 丑数必须为正整数</span></span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 依次剥除所有 2、3、5 因子</span></span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>):</span><br><span class="line">            <span class="comment"># 只要能被 p 整除，就不断除以 p</span></span><br><span class="line">            <span class="keyword">while</span> n % p == <span class="number">0</span>:</span><br><span class="line">                n //= p</span><br><span class="line">        <span class="comment"># 如果剩下 1，则只有 2、3、5 作为质因数</span></span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-12"><a href="#知识点讲解-12" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>质因数剥除</strong>：通过不断除以允许的质因数，将其它因子“过滤”掉，最终判断剩余是否为 1。</li>
+<li><strong>循环／条件判断</strong>：外层遍历每个质因数，内层 <code>while</code> 循环剥除所有相同因子。</li>
+<li><strong>正整数检查</strong>：非正整数（0 或负数）直接排除，不可能是丑数。</li>
+</ul>
+<h3 id="代码详解-12"><a href="#代码详解-12" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>if n &lt;= 0: return False</code>：排除非正数。</li>
+<li><code>for p in (2, 3, 5)</code>：遍历可接受的质因数。</li>
+<li><code>while n % p == 0: n //= p</code>：只要当前因子 <code>p</code> 能整除 <code>n</code>，就将其剔除，并更新 <code>n</code>。</li>
+<li>循环结束后，如果 <code>n</code> 被完全剥除至 1，说明原始 <code>n</code> 仅含 2、3、5 这三种质因数，否则包含其它质因数。</li>
+<li><code>return n == 1</code>：返回布尔判断结果。</li>
+</ol>
+<h3 id="复杂度分析-12"><a href="#复杂度分析-12" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(\log n)$，每次除法操作使 n 至少减半或更快，三种质因数共计操作次数为 $O(\log n)$。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，仅使用常数级额外变量。</li>
+</ul>
+<hr>
+<h2 id="14-重新排列数组"><a href="#14-重新排列数组" class="headerlink" title="14. 重新排列数组"></a>14. 重新排列数组</h2><p> 给你一个数组 <code>nums</code> ，数组中有 <code>2n</code> 个元素，按 <code>[x₁,x₂,…,xₙ,y₁,y₂,…,yₙ]</code> 的格式排列。请你将数组按 <code>[x₁,y₁,x₂,y₂,…,xₙ,yₙ]</code> 格式重新排列，返回重排后的数组。</p>
+<ul>
+<li><strong>示例 1</strong><br> 输入：nums &#x3D; [2,5,1,3,4,7], n &#x3D; 3<br> 输出：[2,3,5,4,1,7]</li>
+<li><strong>示例 2</strong><br> 输入：nums &#x3D; [1,2,3,4,4,3,2,1], n &#x3D; 4<br> 输出：[1,4,2,3,3,2,4,1]</li>
+<li><strong>示例 3</strong><br> 输入：nums &#x3D; [1,1,2,2], n &#x3D; 2<br> 输出：[1,2,1,2]</li>
+</ul>
+<h3 id="代码及注释-13"><a href="#代码及注释-13" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">shuffle</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], n: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        li: <span class="built_in">list</span>[<span class="built_in">int</span>] = []                 <span class="comment"># 存放重排结果</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):                 <span class="comment"># 遍历前 n 个 xi</span></span><br><span class="line">            li.append(nums[i])             <span class="comment"># 依次添加 xi</span></span><br><span class="line">            li.append(nums[i + n])         <span class="comment"># 依次添加对应的 yi</span></span><br><span class="line">        <span class="keyword">return</span> li                          <span class="comment"># 返回重排后的数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-13"><a href="#知识点讲解-13" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>列表拼接</strong>：通过 <code>append</code> 逐对加入元素，避免创建中间子列表。</li>
+<li><strong>下标计算</strong>：<code>nums[i]</code> 对应 $x_i$，<code>nums[i+n]</code> 对应 $y_i$。</li>
+<li><strong>空间使用</strong>：额外列表 <code>li</code> 长度为 <code>2n</code>，与输入规模同量级。</li>
+</ul>
+<h3 id="代码详解-13"><a href="#代码详解-13" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li>初始化空列表 <code>li</code> 用于存放结果。</li>
+<li>使用 <code>for i in range(n)</code> 遍历索引 0 到 n-1：<br>  - <code>nums[i]</code> 为第 i+1 个前半部分元素 $x_i$，加入 <code>li</code>；<br>  - <code>nums[i+n]</code> 为对应的后半部分元素 $y_i$，随后加入。</li>
+<li>循环完成后，<code>li</code> 即为 <code>[x₁,y₁,x₂,y₂,…,xₙ,yₙ]</code>。</li>
+<li>返回 <code>li</code>。</li>
+</ol>
+<h3 id="复杂度分析-13"><a href="#复杂度分析-13" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n)$，遍历 n 次并执行常数次 <code>append</code>。</li>
+<li><strong>空间复杂度</strong>：$O(n)$，额外使用长度为 <code>2n</code> 的列表。</li>
+</ul>
+<hr>
+<h2 id="15-转置矩阵"><a href="#15-转置矩阵" class="headerlink" title="15. 转置矩阵"></a>15. 转置矩阵</h2><p> 给你一个二维整数数组 <code>matrix</code>，返回 <code>matrix</code> 的转置矩阵。</p>
+<p> 矩阵的 <strong>转置</strong> 是指将矩阵的主对角线翻转，交换矩阵的行索引与列索引。</p>
+<h3 id="代码及注释-14"><a href="#代码及注释-14" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">transpose</span>(<span class="params">self, matrix: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        <span class="comment"># 原矩阵的行数</span></span><br><span class="line">        n: <span class="built_in">int</span> = <span class="built_in">len</span>(matrix)</span><br><span class="line">        <span class="comment"># 原矩阵的列数（假设所有行长度相同）</span></span><br><span class="line">        m: <span class="built_in">int</span> = <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># 初始化 m 行 n 列的零矩阵，用来存放转置结果</span></span><br><span class="line">        result: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]] = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m)]</span><br><span class="line">        <span class="comment"># 遍历原矩阵所有位置</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">                <span class="comment"># 将 matrix[i][j] 放到 result[j][i]</span></span><br><span class="line">                result[j][i] = matrix[i][j]</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-14"><a href="#知识点讲解-14" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>矩阵转置</strong>：将原矩阵的第 i 行第 j 列元素，放到新矩阵的第 j 行第 i 列。</li>
+<li><strong>列表推导式初始化二维数组</strong>：<code>[[0] * n for _ in range(m)]</code> 生成 m 行 n 列的零矩阵。</li>
+<li><strong>双重循环遍历</strong>：外层遍历行索引 <code>i</code>，内层遍历列索引 <code>j</code>，保证每个元素都被访问并赋值。</li>
+<li><strong>索引映射</strong>：转置时行列索引互换，即 (i, j) → (j, i)。</li>
+</ul>
+<h3 id="代码详解-14"><a href="#代码详解-14" class="headerlink" title="代码详解"></a>代码详解</h3><ol>
+<li><code>n = len(matrix)</code>、<code>m = len(matrix[0])</code>：分别获取原矩阵的行数和列数。</li>
+<li><code>result = [[0] * n for _ in range(m)]</code>：构造一个 m×n 的全零矩阵用于存放结果。</li>
+<li>双层 for 循环：<br>  - <code>for i in range(n)</code>：枚举原矩阵的行索引；<br>  - <code>for j in range(m)</code>：枚举原矩阵的列索引；</li>
+<li>在循环体内执行 <code>result[j][i] = matrix[i][j]</code>，完成行列互换的赋值。</li>
+<li>循环结束后返回 <code>result</code>。</li>
+</ol>
+<h3 id="复杂度分析-14"><a href="#复杂度分析-14" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n × m)$，需访问并赋值原矩阵中所有 n×m 个元素。</li>
+<li><strong>空间复杂度</strong>：$O(n × m)$，额外开辟一个尺寸为 m×n 的结果矩阵。</li>
+</ul>
+<hr>
+<h2 id="16-分割字符串的最大得分"><a href="#16-分割字符串的最大得分" class="headerlink" title="16. 分割字符串的最大得分"></a>16. 分割字符串的最大得分</h2><p> 给你一个由字符 ‘0’ 和 ‘1’ 组成的字符串 <code>s</code>，请你将字符串 <code>s</code> 按某个位置 <strong>分割</strong> 成两个 <strong>非空</strong> 子字符串（左子字符串和右子字符串），使得得分最大。</p>
+<ul>
+<li>分割字符串的 <strong>得分</strong> 定义为：左子字符串中 ‘0’ 的数量 + 右子字符串中 ‘1’ 的数量。</li>
+<li>返回可以得到的 <strong>最大得分</strong>。</li>
+</ul>
+<p><strong>示例 1</strong></p>
+<ul>
+<li>输入：s &#x3D; “011101”<br>输出：5<br>解释：  <br>将 s 分成 “0” | “11101”，得分 &#x3D; 1 + 4 &#x3D; 5  <br>其他分割方式得分都不高于 5</li>
+</ul>
+<p>  </p>
+<p><strong>示例 2</strong><br>输入：s &#x3D; “00111”<br>输出：5<br>解释：将 s 分成 “00” | “111”，得分 &#x3D; 2 + 3 &#x3D; 5</p>
+<p><strong>示例 3</strong><br>输入：s &#x3D; “1111”<br>输出：3</p>
+<h3 id="代码及注释-15"><a href="#代码及注释-15" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxScore</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># left：当前分割点左边子串的长度，最小为 1</span></span><br><span class="line">        <span class="comment"># right：字符串总长度</span></span><br><span class="line">        <span class="comment"># score：记录遍历所有分割后能得到的最大得分</span></span><br><span class="line">        left, right, score = <span class="number">1</span>, <span class="built_in">len</span>(s), <span class="number">0</span></span><br><span class="line">        <span class="comment"># 尝试所有可能的分割位置，分割点从 1 到 len(s)-1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            score_tmp = <span class="number">0</span>  <span class="comment"># 本次分割的得分</span></span><br><span class="line">            <span class="comment"># 统计左子串中 &#x27;0&#x27; 的个数</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left):</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">                    score_tmp += <span class="number">1</span></span><br><span class="line">            <span class="comment"># 统计右子串中 &#x27;1&#x27; 的个数</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left, right):</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">                    score_tmp += <span class="number">1</span></span><br><span class="line">            <span class="comment"># 更新最大得分</span></span><br><span class="line">            score = <span class="built_in">max</span>(score, score_tmp)</span><br><span class="line">            left += <span class="number">1</span>  <span class="comment"># 移动分割点到下一个位置</span></span><br><span class="line">        <span class="keyword">return</span> score</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-15"><a href="#知识点讲解-15" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>分割枚举</strong>：要使左右子串都非空，分割点 <code>left</code> 从 1 遍历到 <code>len(s)-1</code>。</li>
+<li><strong>计数统计</strong>：分别对左边区间和右边区间进行遍历统计，累加零和一的数量。</li>
+<li><strong>临时和与最大值</strong>：每次分割都算出一个临时得分 <code>score_tmp</code>，并与当前最大值 <code>score</code> 比较、更新。</li>
+<li><strong>可优化思路</strong>：利用前缀和&#x2F;后缀和数组预先统计零和一的累计次数，可以将统计从 $O(n)$ 降到 $O(1)$，整体时间降为 $O(n)$。</li>
+</ul>
+<h3 id="代码详解-15"><a href="#代码详解-15" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong>初始化</strong></p>
+<ul>
+<li><code>left = 1</code>：首个分割点在第一个字符和第二个字符之间；</li>
+<li><code>right = len(s)</code>：总长度，用于确定右子串区间终点；</li>
+<li><code>score = 0</code>：存放迄今为止的最优得分。</li>
+</ul>
+<p><strong>分割循环</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> left &lt; right:</span><br><span class="line">    score_tmp = <span class="number">0</span></span><br><span class="line">    ...</span><br><span class="line">    left += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>保证左、右子串都非空；每次循环 <code>left</code> 向右移动一个位置。</li>
+</ul>
+<p><strong>左子串统计</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left):</span><br><span class="line">    <span class="keyword">if</span> s[i] == <span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">        score_tmp += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历 <code>[0, left-1]</code>，统计 ‘0’ 的个数。</li>
+</ul>
+<p><strong>右子串统计</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left, right):</span><br><span class="line">    <span class="keyword">if</span> s[i] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">        score_tmp += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历 <code>[left, len(s)-1]</code>，统计 ‘1’ 的个数。</li>
+</ul>
+<p><strong>更新答案</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">score = <span class="built_in">max</span>(score, score_tmp)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将本次分割得分与全局最优比较，取较大者。</li>
+</ul>
+<p><strong>返回结果</strong></p>
+<ul>
+<li>循环结束后，<code>score</code> 即为最大可得分。</li>
+</ul>
+<h3 id="复杂度分析-15"><a href="#复杂度分析-15" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n²)$，共有 $O(n)$ 个分割点，每次需要 $O(n)$ 遍历统计。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，只使用常数级额外变量，不依赖于输入大小。</li>
+</ul>
+<p><strong>优化提示</strong>：<br>通过一次前缀统计 <code>zeros[i]</code>（前 i 个字符中 ‘0’ 的累计数）和一次后缀统计 <code>ones[i]</code>（从 i 到结尾中 ‘1’ 的累计数），即可在 $O(1)$ 时间内计算每个分割点的得分，使总时间降为 $O(n)$。</p>
+<hr>
+<h2 id="17-统计范围内的元音字符串数"><a href="#17-统计范围内的元音字符串数" class="headerlink" title="17. 统计范围内的元音字符串数"></a>17. 统计范围内的元音字符串数</h2><p> 给你一个下标从 0 开始的字符串数组 <code>words</code> 和两个整数 <code>left</code> 和 <code>right</code>。</p>
+<p> 如果字符串以元音字母开始并以元音字母结束，那么该字符串就是<strong>元音字符串</strong>，其中元音字母是 ‘a’、’e’、’i’、’o’、’u’。</p>
+<p> 返回 <code>words[i]</code> 是元音字符串的数目，其中 i 在区间 <code>[left, right]</code> 内。</p>
+<h3 id="代码及注释-16"><a href="#代码及注释-16" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], left: <span class="built_in">int</span>, right: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># words：字符串数组</span></span><br><span class="line">        <span class="comment"># left, right：统计范围左右索引（包含）</span></span><br><span class="line">        res: <span class="built_in">int</span> = <span class="number">0</span></span><br><span class="line">        vowels: <span class="built_in">list</span>[<span class="built_in">str</span>] = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>]  <span class="comment"># 元音字母集合</span></span><br><span class="line">        <span class="comment"># 遍历索引 left..right</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left, right + <span class="number">1</span>):</span><br><span class="line">            w = words[i]</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 判断首尾字符是否都是元音</span></span><br><span class="line">            <span class="keyword">if</span> w[<span class="number">0</span>] <span class="keyword">in</span> vowels <span class="keyword">and</span> w[-<span class="number">1</span>] <span class="keyword">in</span> vowels:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-16"><a href="#知识点讲解-16" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>索引访问</strong>：<code>words[i]</code> 获取第 i 个字符串，<code>w[0]</code> 和 <code>w[-1]</code> 分别取首尾字符。</li>
+<li><strong>列表成员判断</strong>：<code>x in vowels</code> 用于判断字符 <code>x</code> 是否为元音。</li>
+<li><strong>循环遍历区间</strong>：<code>for i in range(left, right+1)</code> 枚举所有待检查索引。</li>
+<li><strong>计数累加</strong>：符合条件时 <code>res += 1</code>，最终返回累计值。</li>
+</ul>
+<h3 id="代码详解-16"><a href="#代码详解-16" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong>初始化</strong></p>
+<ul>
+<li><code>res = 0</code>：用于记录元音字符串数量；</li>
+<li><code>vowels = [&#39;a&#39;,&#39;e&#39;,&#39;i&#39;,&#39;o&#39;,&#39;u&#39;]</code>：列出所有元音字符。</li>
+</ul>
+<p><strong>遍历索引区间</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left, right + <span class="number">1</span>):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>枚举从 <code>left</code> 到 <code>right</code>（包含）的每个下标。</li>
+</ul>
+<p><strong>取出当前字符串</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = words[i]</span><br></pre></td></tr></table></figure>
+
+<p><strong>判断首尾元音</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> w[<span class="number">0</span>] <span class="keyword">in</span> vowels <span class="keyword">and</span> w[-<span class="number">1</span>] <span class="keyword">in</span> vowels:</span><br><span class="line">    res += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>w[0]</code> 是首字符，<code>w[-1]</code> 是尾字符，二者都在 <code>vowels</code> 中即为元音字符串。</li>
+</ul>
+<p><strong>返回结果</strong></p>
+<ul>
+<li>遍历结束后，<code>res</code> 即为所求，直接返回。</li>
+</ul>
+<h3 id="复杂度分析-16"><a href="#复杂度分析-16" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(m)$，其中 m &#x3D; right − left + 1。每个字符串只做常数次索引和成员判断。</li>
+<li><strong>空间复杂度</strong>：$O(1)$，仅使用常数级额外空间（计数器与元音列表）。</li>
+</ul>
+<hr>
+<h2 id="18-山脉数组的峰顶索引"><a href="#18-山脉数组的峰顶索引" class="headerlink" title="18. 山脉数组的峰顶索引"></a>18. 山脉数组的峰顶索引</h2><p> 给定一个长度为 n 的整数 <strong>山脉</strong> 数组 <code>arr</code>，其中的值先严格递增到一个峰值元素，然后严格递减。返回峰值元素的下标。你必须设计并实现时间复杂度为 $O(\log n)$ 的解决方案。</p>
+<p><strong>示例 1</strong><br>输入：arr &#x3D; [0,1,0]<br>输出：1</p>
+<p><strong>示例 2</strong><br>输入：arr &#x3D; [0,2,1,0]<br>输出：1</p>
+<p><strong>示例 3</strong><br>输入：arr &#x3D; [0,10,5,2]<br>输出：1</p>
+<p><strong>提示</strong></p>
+<ul>
+<li>3 ≤ arr.length ≤ $10^5$</li>
+<li>0 ≤ arr[i] ≤ $10^6$</li>
+<li>题目数据保证 <code>arr</code> 是一个山脉数组（先严格递增到峰顶，再严格递减）。</li>
+</ul>
+<h3 id="代码及注释-17"><a href="#代码及注释-17" class="headerlink" title="代码及注释"></a>代码及注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">peakIndexInMountainArray</span>(<span class="params">self, arr: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 在 0 .. len(arr)-2 范围内遍历每个下标 i</span></span><br><span class="line">        <span class="comment"># 找到第一个满足 arr[i] &gt; arr[i+1] 的位置，即从增转降的转折点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">next</span>(i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr) - <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">if</span> arr[i] &gt; arr[i + <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识点讲解-17"><a href="#知识点讲解-17" class="headerlink" title="知识点讲解"></a>知识点讲解</h3><ul>
+<li><strong>山脉数组性质</strong>：数组先严格递增到峰顶，再严格递减。峰顶左侧 <code>arr[i] &lt; arr[i+1]</code>，峰顶右侧 <code>arr[i] &gt; arr[i+1]</code>。</li>
+<li><strong>转折点即峰顶</strong>：第一个满足 <code>arr[i] &gt; arr[i+1]</code> 的位置就是峰顶的下标。</li>
+<li><strong>生成器表达式</strong>：<code>(i for i in … if …)</code> 能按需惰性生成符合条件的下标，不用遍历完所有元素。</li>
+<li><strong>next() 取第一个</strong>：<code>next(...)</code> 直接返回生成器的第一个元素，遇到第一个符合条件的位置立即停止，避免多余遍历。</li>
+<li><strong>时间复杂度要求</strong>：虽然此写法最坏为 $O(n)$，但题目鼓励使用二分查找将时间降至 $O(\log n)$。</li>
+</ul>
+<h3 id="代码详解-17"><a href="#代码详解-17" class="headerlink" title="代码详解"></a>代码详解</h3><p><strong><code>range(len(arr) - 1)</code></strong></p>
+<ul>
+<li>枚举所有可能的 “切换点” 下标 <code>i</code>，最后一个可比较位置是 <code>len(arr)-2</code>。</li>
+</ul>
+<p><strong>条件判断 <code>arr[i] &gt; arr[i+1]</code></strong></p>
+<ul>
+<li>当且仅当到达峰顶时，当前元素大于下一个元素，表示从增转降。</li>
+</ul>
+<p><strong><code>next(...)</code></strong></p>
+<ul>
+<li>会遍历生成器得到的下标序列，返回第一个满足条件的 <code>i</code>，并终止迭代。</li>
+</ul>
+<p><strong>整体逻辑</strong></p>
+<ul>
+<li>不需要显式写循环和中断，借助生成器和 <code>next</code> 一行搞定峰顶定位。</li>
+</ul>
+<h3 id="复杂度分析-17"><a href="#复杂度分析-17" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度</strong>：$O(n)$ — 在最坏情况下需扫描到峰顶位置。但理想的二分查找解法可达到 $O(\log n)$。</li>
+<li><strong>空间复杂度</strong>：$O(1)$ — 只使用常数级额外空间。</li>
+</ul>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Eulus</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://miku831.fun/2025/06/12/coderToLC01/" title="「新」动计划 · 编程入门">http://miku831.fun/2025/06/12/coderToLC01/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2025/06/13/hello-world/" rel="prev" title="Hello World"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">Hello World</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2025/06/12/miku/miku1/" rel="next" title="初音未来"><span class="post-nav-text">初音未来</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2025 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> Eulus</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
+mediumZoom(images)</script><style>.medium-zoom-image {
+  z-index: 99;
+}</style></body></html>
