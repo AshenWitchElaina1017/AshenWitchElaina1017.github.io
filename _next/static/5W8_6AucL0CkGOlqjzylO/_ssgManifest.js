@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Facg\u002Fanime\u002F[anime_id]","\u002Facg\u002Fcomic\u002F[manga_id]","\u002Facg\u002Fcomic\u002F[manga_id]\u002F[chapter_id]","\u002Facg\u002Flightnovel\u002F[lightnovel_id]","\u002Facg\u002Flightnovel\u002F[lightnovel_id]\u002F[chapter_id]","\u002Farticle\u002F[article_id]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
