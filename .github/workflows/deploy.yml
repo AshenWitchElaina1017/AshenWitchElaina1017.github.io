@@ -1,4 +1,5 @@
-name: Deploy static site to Pages
+# .github/workflows/deploy.yml
+name: Build & Deploy Next static export
 
 on:
   push:
@@ -15,25 +16,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm i --frozen-lockfile
+
+      - name: Build (Next static export)
+        run: pnpm run build
+
+      - name: Add .nojekyll (safety)
+        run: echo > out/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Remove raw markdown to avoid route conflicts
-        run: |
-          find out/article -type f \( -name "*.md" -o -name "*.txt" \) -delete || true
-      - name: Add .nojekyll (safety)
-        run: echo > out/.nojekyll
-      # 如果仓库根就是静态文件（out 内容已拷贝到根），就上传根目录
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
