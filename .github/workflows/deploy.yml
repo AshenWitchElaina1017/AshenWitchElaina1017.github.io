@@ -23,7 +23,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      - name: Remove raw markdown to avoid route conflicts
+        run: |
+          find out/article -type f \( -name "*.md" -o -name "*.txt" \) -delete || true
+      - name: Add .nojekyll (safety)
+        run: echo > out/.nojekyll
       # 如果仓库根就是静态文件（out 内容已拷贝到根），就上传根目录
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
